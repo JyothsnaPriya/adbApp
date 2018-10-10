@@ -1,0 +1,50 @@
+<div class="jumbotron">
+  <header class="container-fluid">
+    <h1>
+      <img [src]="logoUrl" class="img-fluid" style="width:5%" /> {{title}}
+    </h1>
+  </header>
+</div>
+<div class="container">
+
+  <div class="alert alert-info p-4" *ngIf="msg">
+    <fa name="info"></fa> {{msg}}
+  </div>
+
+  <div class="row">
+    <div class="col-sm-1 ml-2" *ngFor="let g of ['GENT','LADY']">
+      <div class="card bg-light " >
+        <img class="card-img-top" [src]="g=='GENT'?gentLogo:ladyLogo" />
+        <div class="card-body text-center">
+          <h3>
+            {{employees|genderCount:g}} 
+          </h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-1 ml-2" *ngFor="let c of ['Developer','HR','Manager','Testing']">
+      <div class="card bg-light " >
+        <img class="card-img-top" [src]="cloudIcon" *ngIf="c=='Manager'" />
+        <img class="card-img-top" [src]="itIcon" *ngIf="c=='Developer'" />
+        <img class="card-img-top" [src]="supportIcon" *ngIf="c=='HR'" />
+        <img class="card-img-top" [src]="testIcon" *ngIf="c=='Testing'" />
+        <div class="card-body text-center">
+          <h3>
+            {{employees|deptCount:c}} 
+          </h3>
+        </div>
+      </div>
+    </div>
+   
+    <div class="col-sm-1 ml-2">
+        <div class="card bg-light ">
+           <img class="card-img-top" [src]="logoUrl" />
+          <div class="card-body text-center">
+            <h3>
+              {{employees.length}} 
+            </h3>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
