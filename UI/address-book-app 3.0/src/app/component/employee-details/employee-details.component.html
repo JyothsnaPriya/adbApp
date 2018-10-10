@@ -1,0 +1,66 @@
+<div class="container mt-2">
+  <div class="row">
+    <div class="col-sm-9 m-auto" *ngIf="!employee">
+      <h3>
+        <fa name="cog" animation="spin"></fa> Loading
+      </h3>
+    </div>
+    <div class="col-sm-9 m-auto" *ngIf="employee">
+      <h3 class="mb-5 mt-5">
+        <fa name="address-card"></fa>
+        Employee Details
+      </h3>
+      <div class="card">
+        <div class="card-header">
+          <h5 class="float-left">{{employee.firstName}}</h5>
+          <div class="btn-group float-right">
+              <a routerLink="/editEmployee/{{employee.empId}}" class="btn">
+                <fa name="edit"></fa>
+              </a>
+              <a routerLink="/delEmployee/{{employee.empId}}" class="btn">
+                <fa name="trash"></fa>
+              </a>
+  
+            </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-3">
+              <img [src]="contact.gender=='GENT'?gentLogo:ladyLogo" class="img-fluid" />
+            </div>
+            <div class="col-md-3">
+              <img class="card-fluid" [src]="cloudIcon" *ngIf="emplyoee.dept=='Manager'" />
+              <img class="card-fluid" [src]="itIcon" *ngIf="emplyoee.dept=='Developer'" />
+              <img class="card-fluid" [src]="supportIcon" *ngIf="emplyoee.dept=='HR'" />
+              <img class="card-fluid" [src]="testIcon" *ngIf="emplyoee.dept=='Testing'" />
+            </div>
+            <div class="col-md-9">
+
+              <p>
+                <fa name="envelope"></fa><strong>Email Id:</strong> {{employee.emailId}}
+              </p>
+              <p>
+                <fa name="mobile"></fa><strong>Mobile No:</strong> {{employee.mobileNum}}
+              </p>
+              <p>
+                <fa name="calendar"></fa><strong>DOB:</strong> {{employee.dob}}
+              </p>
+              <p>
+                <fa name="envelope"></fa><strong>Basic:</strong>  {{emplyoee.basic}}
+              </p>
+              <p>
+                <fa name="mobile"></fa><strong>Hra:</strong>  {{emplyoee.hra}}
+              </p>
+              <p>
+                <fa name="calendar"></fa> <strong>Dept:</strong> {{emplyoee.dept}}
+              </p>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>
